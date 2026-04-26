@@ -1,16 +1,9 @@
-/* Closeta — vanilla JS for OS detection, scroll animations, icons, CTA tracking */
+/* Closeta - vanilla JS for OS detection, scroll animations, and CTA tracking */
 
 (function () {
   "use strict";
 
-  // ---- 1. Lucide icons: render as soon as DOM ready ----
-  function renderIcons() {
-    if (window.lucide && typeof window.lucide.createIcons === "function") {
-      window.lucide.createIcons();
-    }
-  }
-
-  // ---- 2. OS detection: show only the relevant download buttons ----
+  // ---- 1. OS detection: show only the relevant download buttons ----
   function detectPlatform() {
     var ua = navigator.userAgent || navigator.vendor || "";
     var platform = "both";
@@ -34,7 +27,7 @@
     }
   }
 
-  // ---- 3. Scroll-triggered fade-in animations ----
+  // ---- 2. Scroll-triggered fade-in animations ----
   function initScrollFade() {
     var els = document.querySelectorAll(".scroll-fade");
     if (!("IntersectionObserver" in window)) {
@@ -62,7 +55,7 @@
     });
   }
 
-  // ---- 4. Lightweight CTA click tracking ----
+  // ---- 3. Lightweight CTA click tracking ----
   function initCtaTracking() {
     document.addEventListener("click", function (e) {
       var el = e.target.closest("[data-cta]");
@@ -81,7 +74,7 @@
     });
   }
 
-  // ---- 5. Smooth-scroll polish for in-page links ----
+  // ---- 4. Smooth-scroll polish for in-page links ----
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener("click", function (e) {
@@ -98,7 +91,6 @@
   // ---- Boot ----
   function boot() {
     detectPlatform();
-    renderIcons();
     initScrollFade();
     initCtaTracking();
     initSmoothScroll();

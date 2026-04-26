@@ -58,6 +58,14 @@ body {
   line-height: 1.1;
 }
 
+.store-icon {
+  width: 28px;
+  flex: 0 0 28px;
+  text-align: center;
+  font-size: 28px;
+  line-height: 1;
+}
+
 .primary-store {
   min-width: min(100%, 280px);
   background: #ff5e5e;
@@ -99,18 +107,17 @@ body {
     inset 0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
-.phone-screen {
-  min-height: 610px;
+.phone-screenshot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1260 / 2736;
+  height: auto;
+  max-height: 680px;
   overflow: hidden;
   border-radius: 34px;
   background: #ffffff;
+  object-fit: cover;
   box-shadow: inset 0 0 0 1px rgba(87, 24, 24, 0.08);
-}
-
-.phone-top {
-  background: linear-gradient(135deg, #ff5e5e, #c92f2f);
-  color: #ffffff;
-  padding: 26px 18px 20px;
 }
 
 .proof-card {
@@ -160,8 +167,10 @@ body {
   padding: 24px;
 }
 
-.feature-card svg {
+.feature-card i {
   color: #ed4242;
+  font-size: 28px;
+  line-height: 1;
 }
 
 .feature-card h3 {
@@ -253,8 +262,8 @@ img {
     border-radius: 38px;
   }
 
-  .phone-screen {
-    min-height: 520px;
+  .phone-screenshot {
+    max-height: 600px;
     border-radius: 30px;
   }
 
@@ -288,12 +297,8 @@ img {
     padding: 8px;
   }
 
-  .phone-screen {
-    min-height: 470px;
-  }
-
-  .phone-top {
-    padding: 22px 14px 16px;
+  .phone-screenshot {
+    max-height: 540px;
   }
 
   .proof-card {
