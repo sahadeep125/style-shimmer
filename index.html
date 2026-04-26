@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Closeta — Plan, Organize & Style Your Closet | Free App</title>
+    <meta
+      name="description"
+      content="Too many clothes, nothing to wear? Closeta is the #1 private closet organizer & outfit planner. Plan looks, build outfits, pack smarter. Free on iOS & Android."
+    />
+    <meta name="theme-color" content="#ff5e5e" />
+    <link rel="icon" href="logo.webp" type="image/webp" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Closeta — Your Smart Closet" />
+    <meta property="og:description" content="Plan. Organize. Create your perfect look. Free on iOS & Android." />
+    <meta property="og:image" content="logo.webp" />
+    <meta property="og:type" content="website" />
+
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Tailwind theme config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["'Playfair Display'", "serif"],
+            },
+            colors: {
+              brand: {
+                50: "#fff1f1",
+                100: "#ffdede",
+                200: "#ffc1c1",
+                300: "#ff9a9a",
+                400: "#ff7878",
+                500: "#ff5e5e",
+                600: "#f04545",
+                700: "#c93232",
+                800: "#9c2424",
+                900: "#6b1717",
+              },
+            },
+            animation: {
+              "float-slow": "float 9s ease-in-out infinite",
+              "float-mid": "float 6s ease-in-out infinite",
+              "float-fast": "float 4.5s ease-in-out infinite",
+              "fade-up": "fadeUp 0.8s ease forwards",
+              "pulse-soft": "pulseSoft 2.4s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%,100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-18px)" },
+              },
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              pulseSoft: {
+                "0%,100%": { transform: "scale(1)", boxShadow: "0 0 0 0 rgba(255,255,255,.5)" },
+                "50%": { transform: "scale(1.02)", boxShadow: "0 0 0 14px rgba(255,255,255,0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="font-sans text-white antialiased overflow-x-hidden">
+    <!-- Decorative blobs -->
+    <div class="blob bg-pink-200 w-[300px] h-[300px] -top-20 -left-20 sm:w-[500px] sm:h-[500px]"></div>
+    <div class="blob bg-rose-300 w-[400px] h-[400px] top-[40%] -right-40 sm:w-[600px] sm:h-[600px]"></div>
+    <div class="blob bg-red-200 w-[280px] h-[280px] bottom-[10%] left-[20%] sm:w-[400px] sm:h-[400px]"></div>
+
+    <!-- Top promo bar -->
+    <div class="relative z-50 glass-dark text-center text-[11px] sm:text-xs py-2 px-4 font-medium">
+      <span class="opacity-90">
+        <i data-lucide="sparkles" class="inline w-3 h-3 -mt-0.5"></i>
+        Free forever · Private & offline · Loved by thousands
+      </span>
+    </div>
+
+    <!-- NAV -->
+    <header class="sticky top-2 sm:top-4 z-50 px-3 sm:px-4">
+      <nav
+        class="glass max-w-6xl mx-auto rounded-2xl px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between"
+      >
+        <a href="#" class="flex items-center gap-2 sm:gap-3">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl glass-strong p-1 flex items-center justify-center">
+            <img src="logo.webp" alt="Closeta logo" class="w-full h-full object-contain rounded-lg" />
+          </div>
+          <div class="leading-none">
+            <div class="text-base sm:text-xl font-bold tracking-tight">Closeta</div>
+            <div class="text-[9px] sm:text-[10px] opacity-80 hidden sm:block">Your Smart Closet</div>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-7 text-sm font-medium text-white/90">
+          <a href="#features" class="hover:text-white transition">Features</a>
+          <a href="#how" class="hover:text-white transition">How it works</a>
+          <a href="#faq" class="hover:text-white transition">FAQ</a>
+          <a href="#download" class="hover:text-white transition">Download</a>
+        </div>
+        <a
+          href="#download"
+          class="glass-strong rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold hover:bg-white/30 transition"
+          data-cta="nav-get-app"
+        >
+          Get app
+        </a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative pt-8 sm:pt-12 pb-12 sm:pb-20 px-5">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+        <div class="animate-fade-up text-center md:text-left order-1">
+          <div
+            class="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] sm:text-xs font-medium mb-5"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+            #1 closet organizer · Free
+          </div>
+          <h1
+            class="font-display text-[2rem] leading-[1.05] sm:text-5xl md:text-7xl font-extrabold tracking-tight"
+          >
+            Too many clothes,<br />
+            <span class="italic text-white/95">nothing</span> to wear?
+          </h1>
+          <p
+            class="mt-5 text-base sm:text-lg md:text-xl text-white/90 max-w-lg mx-auto md:mx-0 leading-relaxed"
+          >
+            Plan. Organize. Create your perfect look — every day.
+            <span class="block mt-1 text-white/75 text-sm sm:text-base">
+              Build outfits, plan your week, pack smarter. All in one private app.
+            </span>
+          </p>
+
+          <!-- PRIMARY CTA — OS aware -->
+          <div
+            id="hero-cta"
+            class="mt-7 flex flex-col sm:flex-row gap-3 justify-center md:justify-start"
+          >
+            <!-- iOS only -->
+            <a
+              data-platform="ios"
+              href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759"
+              target="_blank"
+              rel="noopener"
+              data-cta="hero-ios"
+              class="group bg-white text-brand-700 rounded-2xl px-6 py-4 items-center gap-3 font-bold shadow-2xl hover:scale-[1.03] transition animate-pulse-soft justify-center"
+            >
+              <i data-lucide="apple" class="w-7 h-7 flex-shrink-0"></i>
+              <div class="text-left leading-tight">
+                <div class="text-[10px] uppercase tracking-wider opacity-70">Download on the</div>
+                <div class="text-lg font-extrabold">App Store</div>
+              </div>
+            </a>
+            <!-- Android only -->
+            <a
+              data-platform="android"
+              href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta"
+              target="_blank"
+              rel="noopener"
+              data-cta="hero-android"
+              class="group bg-white text-brand-700 rounded-2xl px-6 py-4 items-center gap-3 font-bold shadow-2xl hover:scale-[1.03] transition animate-pulse-soft justify-center"
+            >
+              <i data-lucide="play" class="w-7 h-7 flex-shrink-0"></i>
+              <div class="text-left leading-tight">
+                <div class="text-[10px] uppercase tracking-wider opacity-70">Get it on</div>
+                <div class="text-lg font-extrabold">Google Play</div>
+              </div>
+            </a>
+            <!-- Both (desktop / unknown) -->
+            <a
+              data-platform="both"
+              href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759"
+              target="_blank"
+              rel="noopener"
+              data-cta="hero-both-ios"
+              class="bg-white text-brand-700 rounded-2xl px-5 py-3.5 items-center gap-3 font-bold shadow-xl hover:scale-[1.03] transition justify-center"
+            >
+              <i data-lucide="apple" class="w-6 h-6"></i>
+              <div class="text-left leading-tight">
+                <div class="text-[9px] uppercase tracking-wider opacity-70">Download</div>
+                <div class="text-base font-extrabold">App Store</div>
+              </div>
+            </a>
+            <a
+              data-platform="both"
+              href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta"
+              target="_blank"
+              rel="noopener"
+              data-cta="hero-both-android"
+              class="bg-white text-brand-700 rounded-2xl px-5 py-3.5 items-center gap-3 font-bold shadow-xl hover:scale-[1.03] transition justify-center"
+            >
+              <i data-lucide="play" class="w-6 h-6"></i>
+              <div class="text-left leading-tight">
+                <div class="text-[9px] uppercase tracking-wider opacity-70">Get it on</div>
+                <div class="text-base font-extrabold">Google Play</div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Trust signals -->
+          <div
+            class="mt-5 flex items-center gap-3 sm:gap-4 justify-center md:justify-start text-xs sm:text-sm text-white/85 flex-wrap"
+          >
+            <div class="flex items-center gap-1">
+              <span class="text-yellow-200 text-base">★★★★★</span>
+              <span class="font-semibold">4.8</span>
+            </div>
+            <span class="opacity-60">·</span>
+            <span>10k+ downloads</span>
+            <span class="opacity-60 hidden sm:inline">·</span>
+            <span class="hidden sm:inline">100% private</span>
+          </div>
+        </div>
+
+        <!-- Phone mockup -->
+        <div class="relative flex justify-center order-2 animate-fade-up">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-white/20 blur-3xl"></div>
+          </div>
+          <div class="relative">
+            <div
+              class="glass-strong rounded-[2.5rem] sm:rounded-[3rem] p-2.5 sm:p-3 w-[230px] sm:w-[280px] md:w-[300px] shadow-2xl animate-float-mid"
+            >
+              <div
+                class="rounded-[2rem] sm:rounded-[2.4rem] overflow-hidden bg-white aspect-[9/19.5] flex flex-col"
+              >
+                <!-- Phone header -->
+                <div class="bg-brand-500 px-4 pt-4 pb-3 text-white">
+                  <div class="flex items-center justify-between text-[10px] font-semibold opacity-90">
+                    <span>9:41</span>
+                    <span class="flex gap-1">
+                      <span class="w-3 h-1.5 rounded-sm bg-white/80"></span>
+                      <span class="w-3 h-1.5 rounded-sm bg-white/50"></span>
+                    </span>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between">
+                    <div>
+                      <div class="text-[9px] opacity-80">Select Cabinet</div>
+                      <div class="font-bold text-sm flex items-center gap-1">
+                        My Cabinet <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center"
+                    >
+                      <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                    </div>
+                  </div>
+                  <div
+                    class="mt-2 bg-white rounded-xl px-2.5 py-1.5 flex items-center gap-1.5 text-brand-700/60 text-[10px]"
+                  >
+                    <i data-lucide="search" class="w-3 h-3"></i>
+                    <span>Search</span>
+                  </div>
+                </div>
+                <!-- Phone body -->
+                <div class="p-3 flex-1 flex flex-col gap-2.5 text-brand-900">
+                  <div>
+                    <div class="text-[10px] font-bold mb-1">Top (5) ›</div>
+                    <div class="grid grid-cols-4 gap-1">
+                      <div class="aspect-square rounded-md bg-brand-900/80"></div>
+                      <div class="aspect-square rounded-md bg-neutral-800"></div>
+                      <div class="aspect-square rounded-md bg-blue-300"></div>
+                      <div class="aspect-square rounded-md bg-rose-400"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="text-[10px] font-bold mb-1">Bottom (5) ›</div>
+                    <div class="grid grid-cols-4 gap-1">
+                      <div class="aspect-square rounded-md bg-amber-900"></div>
+                      <div class="aspect-square rounded-md bg-blue-700"></div>
+                      <div class="aspect-square rounded-md bg-stone-500"></div>
+                      <div class="aspect-square rounded-md bg-blue-400"></div>
+                    </div>
+                  </div>
+                  <div class="mt-auto">
+                    <div
+                      class="bg-brand-500 text-white rounded-xl py-2.5 text-center text-[11px] font-bold flex items-center justify-center gap-1.5"
+                    >
+                      <i data-lucide="shirt" class="w-3.5 h-3.5"></i>
+                      Create Outfits
+                      <i data-lucide="sparkles" class="w-3 h-3"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Floating cards -->
+            <div
+              class="glass absolute -left-4 sm:-left-10 top-10 sm:top-16 rounded-2xl p-2.5 sm:p-3 w-28 sm:w-36 animate-float-slow"
+            >
+              <div class="text-[9px] sm:text-[10px] uppercase tracking-wider opacity-80">Outfits</div>
+              <div class="text-xl sm:text-2xl font-bold">128</div>
+            </div>
+            <div
+              class="glass absolute -right-3 sm:-right-8 bottom-12 sm:bottom-20 rounded-2xl p-2.5 sm:p-3 w-32 sm:w-40 animate-float-fast"
+            >
+              <div class="text-[9px] sm:text-[10px] uppercase tracking-wider opacity-80">Trip ready</div>
+              <div class="text-sm sm:text-base font-bold">Bali · 7 days</div>
+              <div class="text-[9px] sm:text-[10px] opacity-80 mt-0.5">14 items packed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain points -->
+    <section class="px-5 py-14 sm:py-20">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10 scroll-fade">
+          <div class="text-xs uppercase tracking-[0.2em] opacity-80">Sound familiar?</div>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold mt-3 leading-tight">
+            We've all been there.
+          </h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="glass-dark rounded-2xl p-5 scroll-fade">
+            <i data-lucide="clock" class="w-8 h-8 mb-2 text-brand-200"></i>
+            <div class="font-bold">Wasting time deciding outfits</div>
+            <p class="text-sm opacity-80 mt-1">Every morning is a guessing game.</p>
+          </div>
+          <div class="glass-dark rounded-2xl p-5 scroll-fade">
+            <i data-lucide="help-circle" class="w-8 h-8 mb-2 text-brand-200"></i>
+            <div class="font-bold">Outfits not matching?</div>
+            <p class="text-sm opacity-80 mt-1">Hard to remember what looks great together.</p>
+          </div>
+          <div class="glass-dark rounded-2xl p-5 scroll-fade">
+            <i data-lucide="package-x" class="w-8 h-8 mb-2 text-brand-200"></i>
+            <div class="font-bold">Closet full, still nothing to wear</div>
+            <p class="text-sm opacity-80 mt-1">You forget half of what you own.</p>
+          </div>
+        </div>
+        <div class="text-center mt-10 scroll-fade">
+          <div class="font-display text-2xl sm:text-4xl italic">Closeta fixes all of that.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value props -->
+    <section class="px-5 py-10">
+      <div
+        class="max-w-5xl mx-auto glass rounded-3xl p-6 sm:p-8 grid grid-cols-2 sm:grid-cols-4 gap-5 scroll-fade"
+      >
+        <div class="text-center">
+          <div
+            class="w-12 h-12 mx-auto rounded-full bg-white text-brand-600 flex items-center justify-center"
+          >
+            <i data-lucide="folder-heart" class="w-6 h-6"></i>
+          </div>
+          <div class="mt-3 font-bold text-sm">Organize</div>
+          <div class="text-xs opacity-80">your wardrobe</div>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-12 h-12 mx-auto rounded-full bg-white text-brand-600 flex items-center justify-center"
+          >
+            <i data-lucide="shirt" class="w-6 h-6"></i>
+          </div>
+          <div class="mt-3 font-bold text-sm">Create</div>
+          <div class="text-xs opacity-80">outfits</div>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-12 h-12 mx-auto rounded-full bg-white text-brand-600 flex items-center justify-center"
+          >
+            <i data-lucide="calendar-days" class="w-6 h-6"></i>
+          </div>
+          <div class="mt-3 font-bold text-sm">Plan looks</div>
+          <div class="text-xs opacity-80">every day</div>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-12 h-12 mx-auto rounded-full bg-white text-brand-600 flex items-center justify-center"
+          >
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <div class="mt-3 font-bold text-sm">Look great</div>
+          <div class="text-xs opacity-80">every day</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="px-5 py-14 sm:py-20">
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="max-w-2xl mb-10 sm:mb-14 text-center md:text-left mx-auto md:mx-0 scroll-fade"
+        >
+          <div class="text-xs uppercase tracking-[0.2em] opacity-80">Everything you need</div>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold mt-3 leading-tight">
+            One app. Your <span class="italic">entire</span> wardrobe.
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="shirt" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Closet Organizer</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              Add clothes with photo, color, season & occasion tags.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="folder-tree" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Wardrobe Manager</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              Cabinets, categories & subcategories — find anything fast.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="wand-2" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Outfit Builder</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              "Dress Me" lets you build & save complete looks.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="heart" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Mix & Match</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              Swipe outfit combinations and save your favorites.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="calendar-days" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Outfit Planner</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              Plan looks by date with occasion & event notes.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="luggage" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Trip & Packing</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              Auto-generate packing lists from your trip outfits.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="search" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Quick Search</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              Find any item instantly across your closet.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="share-2" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Outfit Sharing</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              Share looks for feedback or style inspiration.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 hover:bg-white/20 transition scroll-fade">
+            <div class="w-11 h-11 glass-strong rounded-xl flex items-center justify-center mb-3">
+              <i data-lucide="lock" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold">Privacy First</h3>
+            <p class="mt-1.5 text-white/85 text-sm">
+              Local storage. No mandatory cloud upload, ever.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="px-5 py-14 sm:py-20">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 sm:mb-14 scroll-fade">
+          <div class="text-xs uppercase tracking-[0.2em] opacity-80">How it works</div>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold mt-3">
+            Get organized in <span class="italic">3 simple</span> steps
+          </h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4 sm:gap-6">
+          <div class="glass rounded-2xl p-6 sm:p-8 relative overflow-hidden scroll-fade">
+            <div
+              class="absolute -top-6 -right-2 font-display text-[7rem] sm:text-[8rem] font-bold opacity-10"
+            >
+              1
+            </div>
+            <div class="relative">
+              <div class="text-xs uppercase tracking-wider opacity-80">Step one</div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold mt-2">Snap your closet</h3>
+              <p class="text-white/85 mt-2 text-sm">Add each item with a photo and tags.</p>
+            </div>
+          </div>
+          <div class="glass rounded-2xl p-6 sm:p-8 relative overflow-hidden scroll-fade">
+            <div
+              class="absolute -top-6 -right-2 font-display text-[7rem] sm:text-[8rem] font-bold opacity-10"
+            >
+              2
+            </div>
+            <div class="relative">
+              <div class="text-xs uppercase tracking-wider opacity-80">Step two</div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold mt-2">Build your looks</h3>
+              <p class="text-white/85 mt-2 text-sm">Mix, match, and save outfits you love.</p>
+            </div>
+          </div>
+          <div class="glass rounded-2xl p-6 sm:p-8 relative overflow-hidden scroll-fade">
+            <div
+              class="absolute -top-6 -right-2 font-display text-[7rem] sm:text-[8rem] font-bold opacity-10"
+            >
+              3
+            </div>
+            <div class="relative">
+              <div class="text-xs uppercase tracking-wider opacity-80">Step three</div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold mt-2">Plan & pack</h3>
+              <p class="text-white/85 mt-2 text-sm">Schedule looks & auto-pack for any trip.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="px-5 py-14 sm:py-20">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10 scroll-fade">
+          <div class="flex items-center justify-center gap-2">
+            <span class="text-yellow-200 text-2xl">★★★★★</span>
+            <span class="font-bold text-xl">4.8 / 5</span>
+          </div>
+          <div class="text-sm opacity-80 mt-1">From users on Play Store & App Store</div>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="glass rounded-2xl p-5 scroll-fade">
+            <div class="text-yellow-200 text-sm">★★★★★</div>
+            <p class="mt-2 text-sm leading-relaxed">
+              "Finally a closet app that respects my privacy and actually helps me dress better
+              every morning."
+            </p>
+            <div class="mt-3 text-xs opacity-80 font-semibold">— Priya S.</div>
+          </div>
+          <div class="glass rounded-2xl p-5 scroll-fade">
+            <div class="text-yellow-200 text-sm">★★★★★</div>
+            <p class="mt-2 text-sm leading-relaxed">
+              "The trip packing feature is genius. I planned 7 outfits and it built my packing list
+              automatically."
+            </p>
+            <div class="mt-3 text-xs opacity-80 font-semibold">— Marcus T.</div>
+          </div>
+          <div class="glass rounded-2xl p-5 scroll-fade">
+            <div class="text-yellow-200 text-sm">★★★★★</div>
+            <p class="mt-2 text-sm leading-relaxed">
+              "I stopped repeating outfits and finally use clothes I'd forgotten about. Beautiful
+              app."
+            </p>
+            <div class="mt-3 text-xs opacity-80 font-semibold">— Aria L.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="px-5 py-14 sm:py-20">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10 scroll-fade">
+          <div class="text-xs uppercase tracking-[0.2em] opacity-80">Quick answers</div>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold mt-3">FAQ</h2>
+        </div>
+        <div class="space-y-3">
+          <details class="glass rounded-2xl p-5 scroll-fade group">
+            <summary class="font-bold cursor-pointer flex justify-between items-center">
+              Is Closeta free?
+              <i data-lucide="plus" class="w-5 h-5 opacity-70 group-open:rotate-45 transition"></i>
+            </summary>
+            <p class="mt-3 text-sm opacity-90">
+              Yes — Closeta is free to download on iOS and Android. No subscription required to
+              organize your wardrobe.
+            </p>
+          </details>
+          <details class="glass rounded-2xl p-5 scroll-fade group">
+            <summary class="font-bold cursor-pointer flex justify-between items-center">
+              Are my photos private?
+              <i data-lucide="plus" class="w-5 h-5 opacity-70 group-open:rotate-45 transition"></i>
+            </summary>
+            <p class="mt-3 text-sm opacity-90">
+              100%. Closeta is local-first. Your wardrobe photos stay on your device — no mandatory
+              cloud upload.
+            </p>
+          </details>
+          <details class="glass rounded-2xl p-5 scroll-fade group">
+            <summary class="font-bold cursor-pointer flex justify-between items-center">
+              Does it work offline?
+              <i data-lucide="plus" class="w-5 h-5 opacity-70 group-open:rotate-45 transition"></i>
+            </summary>
+            <p class="mt-3 text-sm opacity-90">
+              Yes. The app works fully offline — perfect for travel and packing on the go.
+            </p>
+          </details>
+          <details class="glass rounded-2xl p-5 scroll-fade group">
+            <summary class="font-bold cursor-pointer flex justify-between items-center">
+              How long does setup take?
+              <i data-lucide="plus" class="w-5 h-5 opacity-70 group-open:rotate-45 transition"></i>
+            </summary>
+            <p class="mt-3 text-sm opacity-90">
+              Most users add their first 10 favorite items in under 5 minutes and start building
+              outfits the same day.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL DOWNLOAD CTA -->
+    <section id="download" class="px-5 py-16 sm:py-24">
+      <div
+        class="max-w-4xl mx-auto glass-strong rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-14 text-center relative overflow-hidden scroll-fade"
+      >
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl"
+        ></div>
+        <div class="relative">
+          <div class="w-20 h-20 mx-auto glass rounded-3xl p-3 flex items-center justify-center mb-6">
+            <img src="logo.webp" alt="Closeta" class="w-full h-full object-contain rounded-2xl" />
+          </div>
+          <h2 class="font-display text-3xl sm:text-5xl md:text-6xl font-bold leading-tight">
+            Your style. Your closet.<br />
+            <span class="italic">All in one app.</span>
+          </h2>
+          <p class="mt-4 text-white/90 text-base sm:text-lg max-w-xl mx-auto">
+            Download Closeta free today. Look great every day.
+          </p>
+          <div id="footer-cta" class="mt-7 flex flex-wrap gap-3 justify-center">
+            <a
+              data-platform="ios"
+              href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759"
+              target="_blank"
+              rel="noopener"
+              data-cta="footer-ios"
+              class="bg-white text-brand-700 rounded-2xl px-6 py-4 items-center gap-3 font-bold shadow-2xl hover:scale-[1.03] transition justify-center"
+            >
+              <i data-lucide="apple" class="w-7 h-7"></i>
+              <div class="text-left leading-tight">
+                <div class="text-[10px] uppercase tracking-wider opacity-70">Download on the</div>
+                <div class="text-lg font-extrabold">App Store</div>
+              </div>
+            </a>
+            <a
+              data-platform="android"
+              href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta"
+              target="_blank"
+              rel="noopener"
+              data-cta="footer-android"
+              class="bg-white text-brand-700 rounded-2xl px-6 py-4 items-center gap-3 font-bold shadow-2xl hover:scale-[1.03] transition justify-center"
+            >
+              <i data-lucide="play" class="w-7 h-7"></i>
+              <div class="text-left leading-tight">
+                <div class="text-[10px] uppercase tracking-wider opacity-70">Get it on</div>
+                <div class="text-lg font-extrabold">Google Play</div>
+              </div>
+            </a>
+            <a
+              data-platform="both"
+              href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759"
+              target="_blank"
+              rel="noopener"
+              data-cta="footer-both-ios"
+              class="bg-white text-brand-700 rounded-2xl px-5 py-3.5 items-center gap-3 font-bold shadow-xl hover:scale-[1.03] transition justify-center"
+            >
+              <i data-lucide="apple" class="w-6 h-6"></i>
+              <div class="text-left leading-tight">
+                <div class="text-[9px] uppercase tracking-wider opacity-70">Download</div>
+                <div class="text-base font-extrabold">App Store</div>
+              </div>
+            </a>
+            <a
+              data-platform="both"
+              href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta"
+              target="_blank"
+              rel="noopener"
+              data-cta="footer-both-android"
+              class="bg-white text-brand-700 rounded-2xl px-5 py-3.5 items-center gap-3 font-bold shadow-xl hover:scale-[1.03] transition justify-center"
+            >
+              <i data-lucide="play" class="w-6 h-6"></i>
+              <div class="text-left leading-tight">
+                <div class="text-[9px] uppercase tracking-wider opacity-70">Get it on</div>
+                <div class="text-base font-extrabold">Google Play</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="px-5 pb-28 sm:pb-10 pt-6">
+      <div
+        class="max-w-6xl mx-auto glass rounded-2xl px-5 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-center sm:text-left"
+      >
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg glass-strong p-1 flex items-center justify-center">
+            <img src="logo.webp" alt="Closeta" class="w-full h-full object-contain rounded" />
+          </div>
+          <span class="font-bold">Closeta</span>
+          <span class="text-white/70">© 2025</span>
+        </div>
+        <div class="flex items-center gap-5 text-white/85">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-white"
+            >Play Store</a
+          >
+          <a
+            href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-white"
+            >App Store</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Sticky mobile bottom CTA -->
+    <div id="sticky-cta" class="fixed bottom-3 left-3 right-3 z-50 sm:hidden">
+      <a
+        data-platform="ios"
+        href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759"
+        target="_blank"
+        rel="noopener"
+        data-cta="sticky-ios"
+        class="bg-white text-brand-700 rounded-2xl px-5 py-3.5 items-center justify-center gap-2 font-bold shadow-2xl w-full"
+      >
+        <i data-lucide="apple" class="w-5 h-5"></i>
+        Download on the App Store
+      </a>
+      <a
+        data-platform="android"
+        href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta"
+        target="_blank"
+        rel="noopener"
+        data-cta="sticky-android"
+        class="bg-white text-brand-700 rounded-2xl px-5 py-3.5 items-center justify-center gap-2 font-bold shadow-2xl w-full"
+      >
+        <i data-lucide="play" class="w-5 h-5"></i>
+        Get it on Google Play
+      </a>
+      <div data-platform="both" class="grid-cols-2 gap-2">
+        <a
+          href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759"
+          target="_blank"
+          rel="noopener"
+          data-cta="sticky-both-ios"
+          class="bg-white text-brand-700 rounded-2xl px-3 py-3 flex items-center justify-center gap-2 font-bold shadow-2xl text-sm"
+        >
+          <i data-lucide="apple" class="w-5 h-5"></i>
+          App Store
+        </a>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta"
+          target="_blank"
+          rel="noopener"
+          data-cta="sticky-both-android"
+          class="bg-white text-brand-700 rounded-2xl px-3 py-3 flex items-center justify-center gap-2 font-bold shadow-2xl text-sm"
+        >
+          <i data-lucide="play" class="w-5 h-5"></i>
+          Play
+        </a>
+      </div>
+    </div>
+
+    <!-- App script -->
+    <script src="script.js"></script>
+  </body>
+</html>
