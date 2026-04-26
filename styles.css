@@ -98,25 +98,16 @@ body {
 }
 
 .phone-frame {
-  width: min(82vw, 315px);
-  border-radius: 44px;
-  background: #251212;
-  padding: 10px;
-  box-shadow:
-    0 40px 80px rgba(87, 24, 24, 0.24),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  width: min(82vw, 315px); 
 }
 
 .phone-screenshot {
   display: block;
-  width: 100%;
-  aspect-ratio: 1260 / 2736;
-  height: auto;
-  max-height: 680px;
+  width: 100%; 
+  height: auto; 
   overflow: hidden;
-  border-radius: 34px;
-  background: #ffffff;
-  object-fit: cover;
+  border-radius: 34px; 
+  object-fit: contain;
   box-shadow: inset 0 0 0 1px rgba(87, 24, 24, 0.08);
 }
 
