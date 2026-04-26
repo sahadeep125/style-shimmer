@@ -56,21 +56,41 @@
   }
 
   // ---- 3. Lightweight CTA click tracking ----
+  function sendGoogleAnalyticsEvent(eventName, eventPayload) {
+    if (typeof window.gtag !== "function") return;
+    try {
+      window.gtag("event", eventName, eventPayload);
+    } catch (err) {
+      console.error("Google Analytics event send failed", err);
+    }
+  }
+
   function initCtaTracking() {
     document.addEventListener("click", function (e) {
       var el = e.target.closest("[data-cta]");
       if (!el) return;
-      var name = el.getAttribute("data-cta");
+      var ctaName = el.getAttribute("data-cta") || "unknown";
+      var ctaTarget = el.getAttribute("href") || "";
+      var platform = el.getAttribute("data-platform") || "both";
+      var eventPayload = {
+        event_category: "engagement",
+        event_label: ctaName,
+        cta_name: ctaName,
+        cta_target: ctaTarget,
+        platform: platform,
+      };
 
       // Push to GTM dataLayer if present
       if (window.dataLayer) {
-        window.dataLayer.push({ event: "cta_click", cta: name });
+        window.dataLayer.push({
+          event: "cta_click",
+          cta: ctaName,
+          cta_target: ctaTarget,
+          platform: platform,
+        });
       }
 
-      // Console log for debugging / quick QA
-      try {
-        console.log("[CTA]", name);
-      } catch (err) {}
+      sendGoogleAnalyticsEvent("cta_click", eventPayload);
     });
   }
 
