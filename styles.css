@@ -1,0 +1,91 @@
+/* Closeta — landing page custom styles */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ff5e5e;
+  background-image:
+    radial-gradient(at 12% 18%, #ff8b8b 0px, transparent 55%),
+    radial-gradient(at 88% 8%, #ffb4b4 0px, transparent 50%),
+    radial-gradient(at 72% 95%, #ff3a3a 0px, transparent 55%),
+    radial-gradient(at 8% 88%, #ffd1d1 0px, transparent 50%),
+    linear-gradient(135deg, #ff6b6b 0%, #ff4d4d 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Frosted glass surfaces */
+.glass {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 10px 40px -10px rgba(120, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.glass-dark {
+  background: rgba(60, 0, 0, 0.18);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Decorative blurred blobs */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scroll fade-in animation */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* OS-aware platform buttons (toggled by script.js) */
+[data-platform] {
+  display: none !important;
+}
+
+[data-platform].show {
+  display: flex !important;
+}
+
+#sticky-cta > div[data-platform="both"].show {
+  display: grid !important;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(255, 255, 255, 0.4);
+  color: #6b1717;
+}
+
+/* Prevent layout shift on images */
+img {
+  max-width: 100%;
+  height: auto;
+}
