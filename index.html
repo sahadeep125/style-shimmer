@@ -1,898 +1,574 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Closeta - Outfit Maker & Smart Closet App</title>
-<meta name="description" content="Closeta helps you organize clothes, create outfits, and plan what to wear. Download the free closet organizer app for iOS and Android." />
-<meta name="theme-color" content="#FF5A5A" />
-<link rel="icon" type="image/webp" href="logo.webp" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Closeta — Outfit Planner & Wardrobe Organizer App for iPhone</title>
+    <meta
+      name="description"
+      content="Closeta is the outfit planner & closet organizer app that turns your wardrobe into outfits in seconds. Plan outfits on a calendar, build a capsule wardrobe, and auto-generate packing lists — all private, offline, free on the App Store."
+    />
+    <meta name="keywords" content="outfit planner app, wardrobe organizer app, closet organizer app, digital wardrobe app, outfit maker app, capsule wardrobe app, packing list app, what to wear app" />
+    <meta name="author" content="Deep Saha" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://sahadeep125.github.io/style-shimmer/" />
+    <meta name="theme-color" content="#FF5A5A" />
+    <link rel="icon" type="image/jpeg" href="assets/app-icon.jpg" />
+    <link rel="apple-touch-icon" href="assets/app-icon.jpg" />
 
-<meta property="og:title" content="Closeta - Your Smart Closet" />
-<meta property="og:description" content="Plan outfits, organize your wardrobe, and know what to wear. Free on iOS and Android." />
-<meta property="og:image" content="logo.webp" />
-<meta property="og:type" content="website" />
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Closeta" />
+    <meta property="og:title" content="Closeta — Outfit Planner & Wardrobe Organizer App" />
+    <meta
+      property="og:description"
+      content="Organize your closet, build outfits in seconds, plan looks on a calendar, and auto-generate packing lists. Private and offline on iPhone."
+    />
+    <meta property="og:image" content="assets/screenshots/screenshot-1.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sahadeep125.github.io/style-shimmer/" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --coral: #FF5A5A;
-    --coral-deep: #E84545;
-    --coral-soft: #FFE5E1;
-    --ink: #15110F;
-    --ink-2: #3A332E;
-    --muted: #7A6F67;
-    --line: #ECE4DC;
-    --paper: #FAF6F1;
-    --paper-2: #F3ECE3;
-    --white: #FFFFFF;
-    --radius: 18px;
-    --radius-lg: 28px;
-    --max: 460px;
-    --display: "Bricolage Grotesque", "Cabinet Grotesk", system-ui, sans-serif;
-    --body: "Inter", system-ui, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, monospace;
-  }
-  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    font-family: var(--body);
-    background: var(--paper);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
-  img { display: block; max-width: 100%; }
-  a { color: inherit; text-decoration: none; }
-  button { font: inherit; border: 0; background: none; cursor: pointer; color: inherit; }
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Closeta — Outfit Planner & Wardrobe Organizer App" />
+    <meta name="twitter:description" content="Organize your closet, build outfits in seconds, and never wonder what to wear again." />
+    <meta name="twitter:image" content="assets/screenshots/screenshot-1.jpg" />
 
-  /* Layout shell — mobile-first, capped on tablet/desktop */
-  .shell {
-    max-width: var(--max);
-    margin: 0 auto;
-    position: relative;
-    background: var(--paper);
-    overflow: hidden;
-    transition: max-width 0.3s ease;
-  }
-  @media (min-width: 768px) {
-    body { background: #2a2421; padding: 24px 0; }
-    .shell { box-shadow: 0 30px 80px rgba(0,0,0,0.4); border-radius: 32px; }
-  }
-  @media (min-width: 1024px) {
-    :root { --max: 1100px; }
-    .shell { border-radius: 40px; }
-    .container { padding: 0 40px; }
-    .section-pad { padding: 80px 40px 40px; }
-  }
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
 
-  /* Type */
-  h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; letter-spacing: -0.02em; margin: 0; line-height: 1.05; }
-  h1 { font-size: clamp(40px, 11vw, 52px); letter-spacing: -0.035em; font-weight: 700; }
-  h2 { font-size: clamp(30px, 8vw, 38px); letter-spacing: -0.03em; }
-  h3 { font-size: 22px; letter-spacing: -0.02em; }
-  p { margin: 0; line-height: 1.55; color: var(--ink-2); }
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--coral);
-    font-weight: 500;
-  }
+    <!-- Structured data: SoftwareApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Outfit Maker & Closet Closeta",
+        "alternateName": "Closeta",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS 15.1+",
+        "url": "https://sahadeep125.github.io/style-shimmer/",
+        "image": "https://sahadeep125.github.io/style-shimmer/assets/app-icon.jpg",
+        "description": "Closeta is a wardrobe organizer and outfit planner app that helps you organize your closet, build outfits, plan looks on a calendar, and auto-generate packing lists for trips.",
+        "author": { "@type": "Person", "name": "Deep Saha" },
+        "offers": [
+          { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free download" },
+          { "@type": "Offer", "price": "399", "priceCurrency": "INR", "name": "Premium Monthly" },
+          { "@type": "Offer", "price": "2999", "priceCurrency": "INR", "name": "Premium Yearly" }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "ratingCount": "2"
+        },
+        "downloadUrl": "https://apps.apple.com/in/app/outfit-maker-closet-closeta/id6760401759"
+      }
+    </script>
 
-  /* Utility */
-  .container { padding: 0 22px; }
-  .pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 7px 12px 7px 8px;
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    font-size: 12px; color: var(--ink-2); font-weight: 500;
-  }
-  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
-  .divider-dotted {
-    border: 0; border-top: 1px dashed var(--line); margin: 0;
-  }
+    <!-- Structured data: Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Closeta",
+        "url": "https://sahadeep125.github.io/style-shimmer/",
+        "logo": "https://sahadeep125.github.io/style-shimmer/assets/app-icon.jpg",
+        "sameAs": ["https://apps.apple.com/in/app/outfit-maker-closet-closeta/id6760401759"]
+      }
+    </script>
 
-  /* Top nav */
-  .nav {
-    position: sticky; top: 0; z-index: 30;
-    background: rgba(250,246,241,0.86);
-    backdrop-filter: saturate(160%) blur(14px);
-    -webkit-backdrop-filter: saturate(160%) blur(14px);
-    border-bottom: 1px solid rgba(236, 228, 220, 0.7);
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 18px;
-  }
-  .brand { display: flex; align-items: center; gap: 10px; }
-  .brand img { width: 30px; height: 30px; border-radius: 8px; }
-  .brand-name { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
-  .nav-cta {
-    background: var(--ink); color: var(--white);
-    padding: 9px 14px; border-radius: 999px;
-    font-size: 13px; font-weight: 600;
-    white-space: nowrap;
-    transition: transform 0.15s ease, background 0.2s ease;
-  }
-  .nav-cta:active { transform: scale(0.96); }
+    <!-- Structured data: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Closeta and how does it work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Closeta is a wardrobe organizer and outfit planner app. You photograph or upload your clothes, tag them by category and color, then build outfits by mixing tops, bottoms, shoes and accessories. You can plan outfits on a calendar and generate packing lists for trips."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Closeta free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Closeta is free to download with core wardrobe organizing and outfit planning features included. An optional Premium subscription (monthly or yearly) unlocks additional styling features."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Closeta store my photos in the cloud?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Closeta is privacy-first and offline by design — your wardrobe photos and data are stored on your device, not uploaded to a mandatory cloud service, and are never sold or shared."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Closeta help me build a capsule wardrobe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Closeta lets you catalog every piece you own, see what you actually wear, and mix and match items to build a smaller, more versatile capsule wardrobe over time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Closeta create packing lists for travel?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Create a trip in Closeta, assign an outfit to each day, and the app automatically generates a packing list from the clothing items used in those outfits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Closeta available on Android?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Closeta is currently available on iPhone and iPad through the Apple App Store. An Android version is not available yet."
+            }
+          }
+        ]
+      }
+    </script>
 
-  /* Hero */
-  .hero {
-    position: relative;
-    padding: 28px 22px 0;
-    overflow: hidden;
-  }
-  .hero-grain {
-    position: absolute; inset: 0; pointer-events: none;
-    background-image: radial-gradient(circle at 20% 0%, rgba(255,90,90,0.10), transparent 45%),
-                      radial-gradient(circle at 100% 30%, rgba(255,90,90,0.06), transparent 50%);
-  }
-  .hero-content { position: relative; }
-  .hero h1 { margin-top: 18px; }
-  .hero h1 .accent { color: var(--coral); font-style: italic; font-weight: 600; }
-  .hero-sub {
-    margin-top: 16px;
-    font-size: 16px; line-height: 1.5; color: var(--ink-2);
-    max-width: 360px;
-  }
-  @media (min-width: 1024px) {
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 40px;
-      padding-top: 60px;
-      padding-bottom: 40px;
-    }
-    .hero-content { padding-bottom: 60px; }
-    .hero h1 { font-size: 64px; }
-    .hero-sub { font-size: 18px; max-width: 460px; }
-    .phone-wrap { margin: 0; padding: 0; background: none; }
-    .phone-frame { max-width: 380px; transform: rotate(-2deg); }
-  }
-  .stores {
-    display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap;
-  }
-  .store-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--ink); color: var(--white);
-    padding: 12px 16px; border-radius: 14px;
-    font-weight: 500;
-    transition: transform 0.15s ease, background 0.2s ease;
-    flex: 1; min-width: 150px; justify-content: center;
-  }
-  .store-btn:active { transform: scale(0.97); }
-  .store-btn svg { flex-shrink: 0; }
-  .store-btn-text { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
-  .store-btn-text small { font-size: 10px; line-height: 1; opacity: 0.75; font-weight: 400; }
-  .store-btn-text span { font-size: 15px; line-height: 1.1; font-weight: 600; letter-spacing: -0.01em; }
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EGJWRRJKFE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-EGJWRRJKFE");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  .hero-meta {
-    display: flex; align-items: center; gap: 14px;
-    margin-top: 18px;
-    font-size: 12px; color: var(--muted);
-  }
-  .hero-meta .meta-item { display: inline-flex; align-items: center; gap: 6px; }
-  .hero-meta svg { width: 14px; height: 14px; }
-
-  /* Phone showcase */
-  .phone-wrap {
-    position: relative;
-    margin: 32px -22px 0;
-    padding: 24px 22px 32px;
-    background: linear-gradient(180deg, transparent 0%, var(--paper-2) 30%, var(--paper-2) 100%);
-  }
-  .phone-frame {
-    position: relative;
-    margin: 0 auto;
-    max-width: 320px;
-    transform: rotate(-3deg);
-    transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
-    filter: drop-shadow(0 30px 40px rgba(255, 90, 90, 0.18)) drop-shadow(0 8px 14px rgba(0,0,0,0.08));
-  }
-  .phone-frame:hover { transform: rotate(0deg) translateY(-4px); }
-  .phone-frame img { width: 100%; height: auto; }
-
-  .floating-tag {
-    position: absolute;
-    background: var(--white);
-    padding: 8px 12px;
-    border-radius: 12px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.10);
-    font-size: 12px; font-weight: 600;
-    display: inline-flex; align-items: center; gap: 8px;
-    border: 1px solid var(--line);
-    animation: bob 4s ease-in-out infinite;
-  }
-  .floating-tag .ico {
-    width: 22px; height: 22px; border-radius: 6px;
-    background: var(--coral-soft); color: var(--coral);
-    display: grid; place-items: center;
-  }
-  .tag-1 { top: 8%; left: -4%; animation-delay: 0s; }
-  .tag-2 { top: 36%; right: -6%; animation-delay: 0.6s; }
-  .tag-3 { bottom: 18%; left: -2%; animation-delay: 1.2s; }
-  @keyframes bob {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-
-  /* Section base */
-  section { position: relative; }
-  .section-pad { padding: 64px 22px 24px; }
-  .section-head { margin-bottom: 28px; }
-  .section-head .eyebrow { display: inline-block; margin-bottom: 12px; }
-  .section-head p { margin-top: 12px; font-size: 15px; max-width: 380px; }
-
-  /* Features grid */
-  .features {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-  }
-  @media (min-width: 1024px) {
-    .features { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  }
-  .feat {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 18px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    cursor: default;
-  }
-  .feat:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.05); border-color: #DBC8B6; }
-  .feat-ico {
-    width: 38px; height: 38px; border-radius: 10px;
-    background: var(--coral-soft); color: var(--coral);
-    display: grid; place-items: center; margin-bottom: 12px;
-  }
-  .feat h4 { font-size: 16px; letter-spacing: -0.01em; margin-bottom: 6px; font-weight: 600; }
-  .feat p { font-size: 13px; color: var(--ink-2); line-height: 1.45; }
-  .feat.span-2 { grid-column: 1 / -1; }
-
-  /* How it works — vertical numbered steps */
-  .steps {
-    position: relative;
-    padding-left: 8px;
-  }
-  @media (min-width: 1024px) {
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      padding-left: 0;
-    }
-    .step { display: block; padding-bottom: 0; }
-    .step:not(:last-child)::before {
-      left: 48px; top: 23px; bottom: auto; right: -20px;
-      width: auto; height: 1px;
-      background: repeating-linear-gradient(90deg, var(--line) 0 4px, transparent 4px 8px);
-    }
-    .step-num { margin-bottom: 20px; }
-  }
-  .step {
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 16px;
-    padding-bottom: 28px;
-    position: relative;
-  }
-  .step:not(:last-child)::before {
-    content: "";
-    position: absolute;
-    left: 23px; top: 48px; bottom: 0;
-    width: 1px;
-    background: repeating-linear-gradient(180deg, var(--line) 0 4px, transparent 4px 8px);
-  }
-  .step-num {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: var(--ink); color: var(--white);
-    display: grid; place-items: center;
-    font-family: var(--display); font-weight: 700; font-size: 18px;
-    letter-spacing: -0.02em;
-    z-index: 1;
-  }
-  .step-num.active { background: var(--coral); }
-  .step h4 { font-size: 18px; margin-bottom: 6px; font-weight: 600; }
-  .step p { font-size: 14px; }
-
-  /* Trip spotlight */
-  .spotlight {
-    background: var(--ink);
-    color: var(--white);
-    margin: 0 -22px;
-    padding: 56px 22px 40px;
-    border-radius: 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .spotlight .eyebrow { color: #FF8A8A; }
-  .spotlight h2 { color: var(--white); }
-  .spotlight p { color: rgba(255,255,255,0.72); margin-top: 12px; }
-  @media (min-width: 1024px) {
-    .spotlight {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      padding: 80px 60px;
-    }
-    .spot-card { margin-top: 0; }
-    .spotlight h2 { font-size: 48px; }
-    .spotlight p { font-size: 18px; }
-  }
-  .spot-card {
-    margin-top: 28px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: var(--radius);
-    padding: 20px;
-  }
-  .spot-card .label-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-  .spot-card .trip-name { font-family: var(--display); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
-  .spot-card .trip-dates { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.55); }
-  .pack-list { display: flex; flex-direction: column; gap: 10px; }
-  .pack-item {
-    display: flex; align-items: center; gap: 12px;
-    padding: 10px 12px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 10px;
-    font-size: 13px;
-  }
-  .pack-item .check {
-    width: 18px; height: 18px; border-radius: 50%;
-    background: var(--coral); color: white;
-    display: grid; place-items: center; flex-shrink: 0;
-  }
-  .pack-item .swatch {
-    width: 32px; height: 32px; border-radius: 6px;
-    background: linear-gradient(135deg, var(--paper-2), var(--paper));
-    flex-shrink: 0;
-    background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0 4px, transparent 4px 8px);
-    background-color: #d4c5b3;
-  }
-  .pack-item .swatch.s2 { background-color: #6b7d8f; }
-  .pack-item .swatch.s3 { background-color: #2c2520; }
-  .pack-item .swatch.s4 { background-color: #c97c5b; }
-  .pack-item .pack-meta { flex: 1; }
-  .pack-item .pack-meta div { font-weight: 500; color: white; }
-  .pack-item .pack-meta small { font-size: 11px; color: rgba(255,255,255,0.5); }
-  .pack-counter {
-    display: flex; justify-content: space-between;
-    margin-top: 14px; padding-top: 14px;
-    border-top: 1px dashed rgba(255,255,255,0.15);
-    font-family: var(--mono); font-size: 11px;
-    color: rgba(255,255,255,0.6); letter-spacing: 0.05em;
-  }
-  .pack-counter strong { color: var(--coral); font-weight: 500; }
-
-  /* Privacy callout */
-  .privacy {
-    margin: 0 0 0 0;
-    padding: 56px 22px 24px;
-  }
-  .privacy-card {
-    background: var(--coral-soft);
-    border-radius: var(--radius-lg);
-    padding: 28px 22px;
-    position: relative;
-    overflow: hidden;
-  }
-  @media (min-width: 1024px) {
-    .privacy-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      padding: 60px;
-      align-items: center;
-    }
-    .privacy h2 { font-size: 42px; }
-    .privacy-card p { font-size: 18px; }
-    .privacy-icon { margin-bottom: 24px; }
-  }
-  .privacy-icon {
-    width: 56px; height: 56px;
-    border-radius: 16px;
-    background: var(--coral); color: white;
-    display: grid; place-items: center;
-    margin-bottom: 18px;
-  }
-  .privacy h2 { font-size: 26px; }
-  .privacy-card p { color: var(--ink-2); margin-top: 10px; font-size: 14px; }
-  .privacy-list { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
-  .privacy-list li {
-    list-style: none; display: flex; gap: 10px; align-items: flex-start;
-    font-size: 13px; color: var(--ink);
-  }
-  .privacy-list li::before {
-    content: "✓"; color: var(--coral); font-weight: 700;
-    flex-shrink: 0; margin-top: 1px;
-  }
-
-  /* Who it's for */
-  .who {
-    padding: 56px 22px 24px;
-  }
-  @media (min-width: 1024px) {
-    .who { padding: 80px 40px; text-align: center; }
-    .who .section-head p { margin-left: auto; margin-right: auto; }
-    .who-tags { justify-content: center; gap: 12px; }
-    .who-tag { padding: 12px 20px; font-size: 15px; }
-  }
-  .who-tags {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px;
-  }
-  .who-tag {
-    background: var(--white); border: 1px solid var(--line);
-    padding: 10px 14px; border-radius: 999px;
-    font-size: 13px; font-weight: 500; color: var(--ink-2);
-  }
-  .who-tag.primary { background: var(--ink); color: white; border-color: var(--ink); }
-
-  /* FAQ */
-  .faq { padding: 56px 22px 24px; }
-  @media (min-width: 1024px) {
-    .faq { padding: 80px 40px; }
-    .faq-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 40px;
-    }
-    .faq-item { padding: 24px 0; }
-  }
-  .faq-item {
-    border-bottom: 1px solid var(--line);
-    padding: 18px 0;
-  }
-  .faq-q {
-    width: 100%; text-align: left;
-    display: flex; align-items: center; justify-content: space-between;
-    font-family: var(--display); font-weight: 600;
-    font-size: 16px; letter-spacing: -0.01em;
-    color: var(--ink);
-    padding: 0; gap: 14px;
-  }
-  .faq-q .chev {
-    flex-shrink: 0;
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--paper-2);
-    display: grid; place-items: center;
-    transition: transform 0.25s ease, background 0.2s ease;
-  }
-  .faq-item.open .faq-q .chev { transform: rotate(45deg); background: var(--coral); color: white; }
-  .faq-a {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.35s ease;
-    font-size: 14px; color: var(--ink-2); line-height: 1.55;
-  }
-  .faq-item.open .faq-a { max-height: 240px; padding-top: 12px; }
-
-  /* Final CTA */
-  .final-cta {
-    padding: 60px 22px 40px;
-    text-align: center;
-    background:
-      radial-gradient(circle at 50% 0%, rgba(255,90,90,0.18), transparent 60%),
-      var(--paper);
-  }
-  .final-cta-icon {
-    width: 72px; height: 72px;
-    border-radius: 18px;
-    margin: 0 auto 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(255,90,90,0.3);
-  }
-  .final-cta-icon img { width: 100%; height: 100%; object-fit: cover; }
-  .final-cta h2 { font-size: clamp(28px, 8vw, 36px); }
-  .final-cta p { margin-top: 10px; font-size: 15px; max-width: 320px; margin-left: auto; margin-right: auto; }
-
-  /* Footer */
-  footer {
-    padding: 32px 22px 100px;
-    border-top: 1px solid var(--line);
-    background: var(--paper);
-  }
-  .foot-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
-  .foot-links {
-    display: flex; flex-wrap: wrap; gap: 14px;
-    font-size: 13px; color: var(--muted);
-  }
-  .foot-links a:hover { color: var(--coral); }
-  .foot-copy { font-size: 12px; color: var(--muted); margin-top: 16px; font-family: var(--mono); }
-
-  /* Sticky bottom CTA — mobile only, appears after scroll */
-  .sticky-cta {
-    position: fixed; left: 50%; bottom: 16px;
-    transform: translateX(-50%) translateY(140%);
-    width: calc(100% - 32px); max-width: 420px;
-    background: var(--ink); color: white;
-    border-radius: 18px;
-    padding: 10px;
-    display: flex; align-items: center; gap: 10px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    z-index: 40;
-    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
-  }
-  .sticky-cta.show { transform: translateX(-50%) translateY(0); }
-  .sticky-cta .icn { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
-  .sticky-cta .icn img { width: 100%; height: 100%; object-fit: cover; }
-  .sticky-cta .meta { flex: 1; line-height: 1.2; }
-  .sticky-cta .meta strong { font-family: var(--display); font-weight: 700; font-size: 14px; }
-  .sticky-cta .meta small { display: block; font-size: 11px; opacity: 0.7; margin-top: 2px; }
-  .sticky-cta .grab { background: var(--coral); color: white; padding: 10px 14px; border-radius: 12px; font-weight: 600; font-size: 13px; }
-  @media (min-width: 1024px) {
-    .sticky-cta { display: none !important; }
-  }
-
-  /* Reveal-on-scroll */
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-
-  /* OS detection classes (managed by script.js) */
-  [data-platform] { display: none !important; }
-  [data-platform].show { display: inline-flex !important; }
-  .stores[data-platform].show { display: flex !important; }
-  #sticky-cta[data-platform].show { display: flex !important; }
-</style>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGJWRRJKFE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EGJWRRJKFE');
-</script>
-
-</head>
-<body data-palette="coral" data-display="serif" data-hero-layout="tilted">
-
-<div class="shell">
-
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="brand">
-        <img src="logo.webp" alt="Closeta" />
-        <span class="brand-name">Closeta</span>
-      </div>
-      <a data-platform="ios" href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759" target="_blank" rel="noopener" class="nav-cta" data-cta="nav-get-app-ios">Get the app</a>
-      <a data-platform="android" href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta" target="_blank" rel="noopener" class="nav-cta" data-cta="nav-get-app-android">Get the app</a>
-      <a data-platform="both" href="#download" class="nav-cta" data-cta="nav-get-app">Get the app</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grain"></div>
-    <div class="hero-content">
-      <span class="pill"><span class="dot"></span> Offline-first wardrobe app</span>
-      <h1 class="reveal">
-        Your closet,<br/>
-        finally <span class="accent">organized.</span>
-      </h1>
-      <p class="hero-sub reveal">
-        Catalog every piece, build outfits in seconds, and pack smarter for trips — all from your phone, all stored locally.
-      </p>
-
-      <div class="stores reveal" id="download">
-        <a data-platform="ios" href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759" class="store-btn" target="_blank" rel="noopener" data-cta="hero-ios">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-3.07 2.51-4.55 2.62-4.62-1.43-2.09-3.66-2.38-4.45-2.41-1.89-.19-3.69 1.11-4.65 1.11-.96 0-2.45-1.08-4.02-1.05-2.07.03-3.97 1.2-5.04 3.06-2.15 3.73-.55 9.25 1.55 12.27 1.03 1.48 2.26 3.13 3.86 3.07 1.55-.06 2.13-1 4.01-1 1.87 0 2.41 1 4.04.97 1.67-.03 2.73-1.5 3.75-2.99 1.18-1.71 1.66-3.37 1.69-3.46-.04-.02-3.24-1.24-3.27-4.95zM14.06 4.4c.85-1.04 1.43-2.48 1.27-3.92-1.23.05-2.71.81-3.59 1.85-.79.92-1.49 2.39-1.3 3.81 1.37.1 2.78-.7 3.62-1.74z"/></svg>
-          <div class="store-btn-text"><small>Download on the</small><span>App Store</span></div>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">
+          <img src="assets/app-icon.jpg" alt="Closeta app icon" width="34" height="34" />
+          Closeta
         </a>
-        <a data-platform="android" href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta" class="store-btn" target="_blank" rel="noopener" data-cta="hero-android">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.997.997 0 01-.61-.92V2.734c0-.366.226-.674.61-.92zm10.89 10.893l2.302-2.302 4.453 2.504c.73.41.73 1.474 0 1.884l-4.453 2.504-2.302-2.302L13.792 12l.707-.707zM4.736 1.06l11.21 6.297-2.302 2.302L4.736 1.06zM4.736 22.94l8.908-8.598 2.302 2.302L4.736 22.94z"/></svg>
-          <div class="store-btn-text"><small>Get it on</small><span>Google Play</span></div>
-        </a>
-        <a data-platform="both" href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759" class="store-btn" target="_blank" rel="noopener" data-cta="hero-ios-both">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-3.07 2.51-4.55 2.62-4.62-1.43-2.09-3.66-2.38-4.45-2.41-1.89-.19-3.69 1.11-4.65 1.11-.96 0-2.45-1.08-4.02-1.05-2.07.03-3.97 1.2-5.04 3.06-2.15 3.73-.55 9.25 1.55 12.27 1.03 1.48 2.26 3.13 3.86 3.07 1.55-.06 2.13-1 4.01-1 1.87 0 2.41 1 4.04.97 1.67-.03 2.73-1.5 3.75-2.99 1.18-1.71 1.66-3.37 1.69-3.46-.04-.02-3.24-1.24-3.27-4.95zM14.06 4.4c.85-1.04 1.43-2.48 1.27-3.92-1.23.05-2.71.81-3.59 1.85-.79.92-1.49 2.39-1.3 3.81 1.37.1 2.78-.7 3.62-1.74z"/></svg>
-          <div class="store-btn-text"><small>Download on</small><span>App Store</span></div>
-        </a>
-        <a data-platform="both" href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta" class="store-btn" target="_blank" rel="noopener" data-cta="hero-android-both">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.997.997 0 01-.61-.92V2.734c0-.366.226-.674.61-.92zm10.89 10.893l2.302-2.302 4.453 2.504c.73.41.73 1.474 0 1.884l-4.453 2.504-2.302-2.302L13.792 12l.707-.707zM4.736 1.06l11.21 6.297-2.302 2.302L4.736 1.06zM4.736 22.94l8.908-8.598 2.302 2.302L4.736 22.94z"/></svg>
-          <div class="store-btn-text"><small>Get it on</small><span>Google Play</span></div>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#how-it-works">How it works</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#guides">Guides</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a
+          class="header-cta"
+          href="https://apps.apple.com/in/app/outfit-maker-closet-closeta/id6760401759"
+          data-cta="header_download"
+          data-platform="ios"
+        >
+          <svg class="apple-glyph" width="17" height="17" viewBox="0 0 17 17" fill="currentColor" aria-hidden="true"><path d="M13.9 8.9c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.5-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.7-.7-1.4 0-2.6.8-3.3 2-1.4 2.5-.4 6.1 1 8.1.7 1 1.5 2.1 2.6 2 1-.1 1.4-.7 2.7-.7s1.6.7 2.7.7c1.1 0 1.9-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.1-.8-2.1-3.2zM11.6 2.9c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.4 2.3-1.1z"/></svg> Get the app
         </a>
       </div>
+    </header>
 
-      <div class="hero-meta reveal">
-        <span class="meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
-          Free to download
-        </span>
-        <span class="meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M11 18h2"/></svg>
-          iOS &amp; Android
-        </span>
-        <span class="meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 4.5-3.4 8.5-8 9-4.6-.5-8-4.5-8-9V7l8-4z"/></svg>
-          Local-first
-        </span>
-      </div>
-    </div>
-
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="Closeta-1.png" alt="Closeta app — closet view with tops, bottoms, and shoes" />
-        <div class="floating-tag tag-1">
-          <div class="ico">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/></svg>
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <span class="eyebrow">Free on the App Store</span>
+            <h1 class="text-balance">
+              Stop guessing <span class="accent">what to wear.</span>
+            </h1>
+            <p class="hero-sub">
+              Closeta is the outfit planner &amp; wardrobe organizer app that turns your closet into
+              ready-to-wear outfits — organize your clothes, plan looks on a calendar, and pack for
+              trips in seconds. 100% private, works offline.
+            </p>
+            <div class="hero-ctas">
+              <a
+                class="btn btn-primary"
+                href="https://apps.apple.com/in/app/outfit-maker-closet-closeta/id6760401759"
+                data-cta="hero_download"
+                data-platform="ios"
+              >
+                <svg class="apple-glyph" width="17" height="17" viewBox="0 0 17 17" fill="currentColor" aria-hidden="true"><path d="M13.9 8.9c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.5-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.7-.7-1.4 0-2.6.8-3.3 2-1.4 2.5-.4 6.1 1 8.1.7 1 1.5 2.1 2.6 2 1-.1 1.4-.7 2.7-.7s1.6.7 2.7.7c1.1 0 1.9-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.1-.8-2.1-3.2zM11.6 2.9c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.4 2.3-1.1z"/></svg> Download on the App Store
+              </a>
+              <a class="btn btn-ghost" href="#how-it-works" data-cta="hero_learn_more">See how it works</a>
+            </div>
+            <div class="hero-proof">
+              <span><strong>5.0★</strong> early App Store rating</span>
+              <span><strong>6</strong> wardrobe categories</span>
+              <span><strong>100%</strong> offline &amp; private</span>
+            </div>
           </div>
-          27 items
-        </div>
-        <div class="floating-tag tag-2">
-          <div class="ico">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          <div class="phone-stage">
+            <div class="proof-card left-card">
+              <strong>0</strong>
+              <span>Outfits repeated by accident</span>
+            </div>
+            <div class="phone-frame">
+              <img
+                src="assets/screenshots/screenshot-1.jpg"
+                alt="Closeta app screen showing an organized wardrobe grid with tops, bottoms and shoes"
+                width="924"
+                height="2000"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
+            <div class="proof-card right-card">
+              <strong>&lt;10s</strong>
+              <span>To build a full outfit</span>
+            </div>
           </div>
-          Outfit saved
         </div>
-        <div class="floating-tag tag-3">
-          <div class="ico">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+      </section>
+
+      <!-- DOWNLOAD -->
+      <section>
+        <div class="wrap">
+          <div class="download-card">
+            <h2>Your smarter closet is one download away</h2>
+            <p>Free to install. No account required to start organizing your wardrobe today.</p>
+            <div class="download-ctas">
+              <a
+                class="btn btn-primary"
+                href="https://apps.apple.com/in/app/outfit-maker-closet-closeta/id6760401759"
+                data-cta="download_card_ios"
+                data-platform="ios"
+              >
+                <svg class="apple-glyph" width="17" height="17" viewBox="0 0 17 17" fill="currentColor" aria-hidden="true"><path d="M13.9 8.9c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.5-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.7-.7-1.4 0-2.6.8-3.3 2-1.4 2.5-.4 6.1 1 8.1.7 1 1.5 2.1 2.6 2 1-.1 1.4-.7 2.7-.7s1.6.7 2.7.7c1.1 0 1.9-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.1-.8-2.1-3.2zM11.6 2.9c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.4 2.3-1.1z"/></svg> Download for iPhone
+              </a>
+            </div>
+            <p class="download-note">Requires iOS or iPadOS 15.1+ · Lifestyle · Free with optional Premium</p>
           </div>
-          Mon planned
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- FEATURES -->
-  <section class="section-pad" data-track-section="features">
-    <div class="section-head reveal">
-      <span class="eyebrow">What's inside</span>
-      <h2>Everything you need to dress with intention.</h2>
-      <p>Nine tools that turn a chaotic closet into a system you'll actually use every morning.</p>
-    </div>
-    <div class="features">
-      <div class="feat reveal">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18l-2 12H5L3 8z"/><path d="M8 8V5a4 4 0 018 0v3"/></svg>
+      <!-- SCREENSHOTS -->
+      <section id="screenshots" class="alt-bg">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">Inside the app</span>
+            <h2>Every screen designed to get you dressed faster</h2>
+            <p>From adding your first item to planning a month of outfits — a look at the real app.</p>
+          </div>
+          <div class="shot-scroll">
+            <div class="shot-card">
+              <img src="assets/screenshots/screenshot-1.jpg" alt="Closeta wardrobe organizer screen with tops, bottoms and shoes grouped by category" loading="lazy" width="924" height="2000" />
+              <div class="shot-caption">Organize your closet by category</div>
+            </div>
+            <div class="shot-card">
+              <img src="assets/screenshots/screenshot-6.jpg" alt="Closeta add item screen with take photo or choose from gallery options" loading="lazy" width="1284" height="1712" />
+              <div class="shot-caption">Add clothes in seconds</div>
+            </div>
+            <div class="shot-card">
+              <img src="assets/screenshots/screenshot-5.jpg" alt="Closeta outfit builder screen mixing tops, bottoms and shoes" loading="lazy" width="1284" height="1712" />
+              <div class="shot-caption">Mix, match &amp; create outfits</div>
+            </div>
+            <div class="shot-card">
+              <img src="assets/screenshots/screenshot-2.jpg" alt="Closeta outfit playground showing a saved formal outfit with belt and shoes" loading="lazy" width="1284" height="1712" />
+              <div class="shot-caption">Build complete looks</div>
+            </div>
+            <div class="shot-card">
+              <img src="assets/screenshots/screenshot-3.jpg" alt="Closeta outfit planner calendar with a scheduled office outfit" loading="lazy" width="924" height="2000" />
+              <div class="shot-caption">Plan outfits on a calendar</div>
+            </div>
+            <div class="shot-card">
+              <img src="assets/screenshots/screenshot-4.jpg" alt="Closeta privacy and security screen confirming data stays on device" loading="lazy" width="1284" height="1712" />
+              <div class="shot-caption">Private by design</div>
+            </div>
+          </div>
         </div>
-        <h4>Closet Organizer</h4>
-        <p>Add clothing with photo, color, season, and occasion tags.</p>
-      </div>
-      <div class="feat reveal">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
-        </div>
-        <h4>Wardrobe Manager</h4>
-        <p>Cabinets, categories, and subcategories — every item in its place.</p>
-      </div>
-      <div class="feat reveal">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
-        </div>
-        <h4>Dress Me</h4>
-        <p>Build outfits piece by piece. Save your best looks to reuse later.</p>
-      </div>
-      <div class="feat reveal">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l4 4-4 4M20 7H10a4 4 0 000 8h2"/><path d="M8 21l-4-4 4-4M4 17h10a4 4 0 000-8h-2"/></svg>
-        </div>
-        <h4>Mix &amp; Match</h4>
-        <p>Swipe through outfit combos. Skip what you don't love.</p>
-      </div>
-      <div class="feat reveal span-2">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/><circle cx="8" cy="15" r="1.2" fill="currentColor"/><circle cx="12" cy="15" r="1.2" fill="currentColor"/><circle cx="16" cy="15" r="1.2" fill="currentColor"/></svg>
-        </div>
-        <h4>Outfit Planner Calendar</h4>
-        <p>Plan looks by date, attach occasion notes, and manage your weekly or monthly outfit schedule at a glance.</p>
-      </div>
-      <div class="feat reveal">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        </div>
-        <h4>Quick Search</h4>
-        <p>Find any item in your closet in seconds.</p>
-      </div>
-      <div class="feat reveal">
-        <div class="feat-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
-        </div>
-        <h4>Outfit Sharing</h4>
-        <p>Send looks to friends for a quick second opinion.</p>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section-pad" data-track-section="how-it-works">
-    <div class="section-head reveal">
-      <span class="eyebrow">How it works</span>
-      <h2>From messy drawer to outfit-ready in three steps.</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-num active">1</div>
-        <div>
-          <h4>Snap your wardrobe.</h4>
-          <p>Photograph each piece and tag it with color, season, and occasion. Photos stay on your phone.</p>
+      <!-- HOW IT WORKS -->
+      <section id="how-it-works">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">How it works</span>
+            <h2>From closet chaos to outfit-ready in 4 steps</h2>
+            <p>No complicated setup — Closeta builds your digital wardrobe as you go.</p>
+          </div>
+          <div class="step-grid">
+            <div class="step-card">
+              <span class="num">1</span>
+              <strong>Snap or upload</strong>
+              <p>Photograph each clothing item or import from your gallery — Closeta builds your closet as you add pieces.</p>
+            </div>
+            <div class="step-card">
+              <span class="num">2</span>
+              <strong>Tag &amp; organize</strong>
+              <p>Sort by category, color, season and occasion into cabinets, categories and subcategories you control.</p>
+            </div>
+            <div class="step-card">
+              <span class="num">3</span>
+              <strong>Mix &amp; save outfits</strong>
+              <p>Combine tops, bottoms, shoes and accessories into complete looks, or swipe to discover new combinations.</p>
+            </div>
+            <div class="step-card">
+              <span class="num">4</span>
+              <strong>Plan &amp; pack</strong>
+              <p>Schedule outfits on the planner calendar and auto-generate packing lists before every trip.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="alt-bg">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">Everything in one app</span>
+            <h2>A closet organizer, outfit maker and packing list app — combined</h2>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="ico">👕</div>
+              <h3>Digital wardrobe organizer</h3>
+              <p>Catalog tops, bottoms, dresses, shoes, outerwear and accessories with photos, colors and seasons.</p>
+            </div>
+            <div class="feature-card">
+              <div class="ico">✨</div>
+              <h3>Outfit builder</h3>
+              <p>Build complete outfits piece by piece and save them as your personal lookbook.</p>
+            </div>
+            <div class="feature-card">
+              <div class="ico">🔀</div>
+              <h3>Swipe to discover</h3>
+              <p>Swipe through auto-generated outfit combinations for instant daily inspiration.</p>
+            </div>
+            <div class="feature-card">
+              <div class="ico">📅</div>
+              <h3>Outfit planner calendar</h3>
+              <p>Schedule outfits by date, add occasion notes, and track what you've already worn.</p>
+            </div>
+            <div class="feature-card">
+              <div class="ico">🧳</div>
+              <h3>Trip packing lists</h3>
+              <p>Assign outfits to each day of a trip and get an automatic packing list — nothing forgotten.</p>
+            </div>
+            <div class="feature-card">
+              <div class="ico">🔒</div>
+              <h3>Private &amp; offline-first</h3>
+              <p>Your photos and wardrobe data stay on your device. Nothing sold, nothing shared.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUIDES -->
+      <section id="guides">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">Guides</span>
+            <h2>Learn how to get dressed smarter</h2>
+            <p>Practical guides for the wardrobe questions people actually search for — with a Closeta how-to inside each one.</p>
+          </div>
+          <div class="guide-grid">
+            <a class="guide-card" href="guides/organize-closet-digitally.html">
+              <span class="tag">Organizing</span>
+              <h3>How to Organize Your Closet Digitally</h3>
+              <p>A step-by-step system for cataloging every item you own — and actually keeping it up to date.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/plan-outfits-for-the-week.html">
+              <span class="tag">Planning</span>
+              <h3>How to Plan Outfits for the Week</h3>
+              <p>Stop deciding what to wear every morning — plan five outfits in one Sunday session.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/what-to-wear-app.html">
+              <span class="tag">Everyday styling</span>
+              <h3>Best "What to Wear" App: How It Actually Works</h3>
+              <p>What a what-to-wear app does, and how to use one with the clothes you already own.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/build-a-capsule-wardrobe.html">
+              <span class="tag">Capsule wardrobe</span>
+              <h3>How to Build a Capsule Wardrobe</h3>
+              <p>A practical framework for narrowing your closet to fewer, more versatile pieces.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/packing-list-for-travel.html">
+              <span class="tag">Travel</span>
+              <h3>How to Make a Packing List for Travel</h3>
+              <p>Never overpack or forget an item again — build a packing list from real outfits.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/outfit-planner-calendar.html">
+              <span class="tag">Planning</span>
+              <h3>Using an Outfit Planner Calendar</h3>
+              <p>Why scheduling outfits ahead of time saves hours every month — and how to set it up.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/catalog-your-clothes.html">
+              <span class="tag">Organizing</span>
+              <h3>How to Catalog Your Clothes the Right Way</h3>
+              <p>The tagging system that makes a big wardrobe searchable in seconds.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/outfit-ideas-from-your-closet.html">
+              <span class="tag">Inspiration</span>
+              <h3>How to Get Outfit Ideas From Your Own Closet</h3>
+              <p>Rediscover clothes you forgot you owned with a smarter way to mix and match.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/best-app-to-organize-wardrobe.html">
+              <span class="tag">Comparison</span>
+              <h3>Best App to Organize Your Wardrobe in 2026</h3>
+              <p>What to look for in a wardrobe app, and how Closeta compares on privacy and features.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+            <a class="guide-card" href="guides/stop-wasting-time-picking-outfits.html">
+              <span class="tag">Productivity</span>
+              <h3>How to Stop Wasting Time Picking Outfits</h3>
+              <p>The real reason mornings feel slow — and the planning habit that fixes it.</p>
+              <span class="read-more">Read the guide →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="alt-bg">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">FAQ</span>
+            <h2>Questions people ask before downloading</h2>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary class="faq-q">
+                What is Closeta and how does it work?
+                <span class="plus">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>Closeta is a wardrobe organizer and outfit planner app. You photograph or upload your clothes, tag them by category and color, then build outfits by mixing tops, bottoms, shoes and accessories. You can plan outfits on a calendar and generate packing lists for trips.</p>
+                <a class="learn-more" href="guides/organize-closet-digitally.html">Learn more about organizing your closet digitally →</a>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">
+                Is Closeta free to use?
+                <span class="plus">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>Yes. Closeta is free to download with core wardrobe organizing and outfit planning features included. An optional Premium subscription (monthly or yearly) unlocks additional styling features.</p>
+                <a class="learn-more" href="guides/best-app-to-organize-wardrobe.html">Learn more about what's included →</a>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">
+                Does Closeta store my photos in the cloud?
+                <span class="plus">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>No. Closeta is privacy-first and offline by design — your wardrobe photos and data are stored on your device, not uploaded to a mandatory cloud service, and are never sold or shared.</p>
+                <a class="learn-more" href="privacy.html">Read the full privacy policy →</a>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">
+                Can Closeta help me build a capsule wardrobe?
+                <span class="plus">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>Yes. Closeta lets you catalog every piece you own, see what you actually wear, and mix and match items to build a smaller, more versatile capsule wardrobe over time.</p>
+                <a class="learn-more" href="guides/build-a-capsule-wardrobe.html">Learn how to build a capsule wardrobe →</a>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">
+                Does Closeta create packing lists for travel?
+                <span class="plus">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>Yes. Create a trip in Closeta, assign an outfit to each day, and the app automatically generates a packing list from the clothing items used in those outfits.</p>
+                <a class="learn-more" href="guides/packing-list-for-travel.html">Learn more about travel packing lists →</a>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">
+                Is Closeta available on Android?
+                <span class="plus">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>Closeta is currently available on iPhone and iPad through the Apple App Store. An Android version is not available yet — join the App Store waitlist notifications to hear when that changes.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="final-cta">
+        <div class="wrap">
+          <h2 class="text-balance">Ready to know what you're wearing tomorrow?</h2>
+          <p>Join Closeta and turn your closet into outfits you'll actually plan ahead for.</p>
+          <div class="hero-ctas">
+            <a
+              class="btn btn-primary"
+              href="https://apps.apple.com/in/app/outfit-maker-closet-closeta/id6760401759"
+              data-cta="final_download"
+              data-platform="ios"
+            >
+              <svg class="apple-glyph" width="17" height="17" viewBox="0 0 17 17" fill="currentColor" aria-hidden="true"><path d="M13.9 8.9c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.5-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.7-.7-1.4 0-2.6.8-3.3 2-1.4 2.5-.4 6.1 1 8.1.7 1 1.5 2.1 2.6 2 1-.1 1.4-.7 2.7-.7s1.6.7 2.7.7c1.1 0 1.9-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.1-.8-2.1-3.2zM11.6 2.9c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.4 2.3-1.1z"/></svg> Download Closeta free
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="/">
+              <img src="assets/app-icon.jpg" alt="Closeta app icon" width="34" height="34" />
+              Closeta
+            </a>
+            <p>The outfit planner and wardrobe organizer app that helps you organize your closet, plan your looks, and pack smarter — privately and offline.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#how-it-works">How it works</a></li>
+              <li><a href="#screenshots">Screenshots</a></li>
+              <li><a href="https://apps.apple.com/in/app/outfit-maker-closet-closeta/id6760401759">Download on App Store</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Guides</h4>
+            <ul>
+              <li><a href="guides/organize-closet-digitally.html">Organize your closet digitally</a></li>
+              <li><a href="guides/build-a-capsule-wardrobe.html">Build a capsule wardrobe</a></li>
+              <li><a href="guides/packing-list-for-travel.html">Packing list for travel</a></li>
+              <li><a href="guides/outfit-planner-calendar.html">Outfit planner calendar</a></li>
+              <li><a href="guides/what-to-wear-app.html">What to wear app</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="support.html">Support</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Closeta. All rights reserved.</span>
+          <span>Made by Deep Saha</span>
         </div>
       </div>
-      <div class="step reveal">
-        <div class="step-num">2</div>
-        <div>
-          <h4>Build outfits you'll actually wear.</h4>
-          <p>Combine tops, bottoms, shoes, and accessories. Save the looks you love, swipe past the ones you don't.</p>
-        </div>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">3</div>
-        <div>
-          <h4>Plan, pack, repeat.</h4>
-          <p>Drop outfits onto your calendar, generate a packing list for any trip, and stop wasting mornings.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- TRIP SPOTLIGHT -->
-  <section class="spotlight" data-track-section="spotlight">
-    <span class="eyebrow reveal">Trip planner</span>
-    <h2 class="reveal" style="margin-top: 12px;">Pack only what you'll wear.</h2>
-    <p class="reveal">Pick the outfits you want for your trip — Closeta builds the packing list automatically from the exact items you used.</p>
-
-    <div class="spot-card reveal">
-      <div class="label-row">
-        <div>
-          <div class="trip-name">Lisbon weekend</div>
-          <div class="trip-dates">04 OCT — 07 OCT · 4 OUTFITS</div>
-        </div>
-        <div style="background: var(--coral); width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 8l4-4h6l4 4v11a2 2 0 01-2 2H7a2 2 0 01-2-2V8z"/><path d="M9 4v4M15 4v4M5 12h14"/></svg>
-        </div>
-      </div>
-      <div class="pack-list">
-        <div class="pack-item">
-          <div class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <div class="swatch"></div>
-          <div class="pack-meta"><div>Linen shirt — sand</div><small>Top · Casual</small></div>
-        </div>
-        <div class="pack-item">
-          <div class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <div class="swatch s2"></div>
-          <div class="pack-meta"><div>Wide-leg jeans</div><small>Bottom · Everyday</small></div>
-        </div>
-        <div class="pack-item">
-          <div class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <div class="swatch s3"></div>
-          <div class="pack-meta"><div>Black bomber</div><small>Outerwear</small></div>
-        </div>
-        <div class="pack-item">
-          <div class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <div class="swatch s4"></div>
-          <div class="pack-meta"><div>Suede loafers</div><small>Shoes · Smart casual</small></div>
-        </div>
-      </div>
-      <div class="pack-counter">
-        <span>12 ITEMS PACKED</span>
-        <strong>READY ✓</strong>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRIVACY -->
-  <section class="privacy" data-track-section="privacy">
-    <div class="privacy-card reveal">
-      <div class="privacy-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 4.5-3.4 8.5-8 9-4.6-.5-8-4.5-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
-      </div>
-      <span class="eyebrow" style="color: var(--coral-deep);">Privacy-first</span>
-      <h2 style="margin-top: 8px;">Your closet stays on your phone.</h2>
-      <p>Closeta is local-first. No mandatory cloud upload, no account walls, no selling your style data.</p>
-      <ul class="privacy-list">
-        <li>Photos stored in your phone's storage, not our servers.</li>
-        <li>Works fully offline — useful on planes and abroad.</li>
-        <li>No login required to start. Open the app and go.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- WHO IT'S FOR -->
-  <section class="who">
-    <div class="section-head reveal">
-      <span class="eyebrow">Who it's for</span>
-      <h2>Built for anyone who picks an outfit each day.</h2>
-    </div>
-    <div class="who-tags reveal">
-      <span class="who-tag primary">Capsule wardrobe builders</span>
-      <span class="who-tag">Frequent travelers</span>
-      <span class="who-tag">Students</span>
-      <span class="who-tag">Professionals</span>
-      <span class="who-tag">Office wear planners</span>
-      <span class="who-tag">Event &amp; occasion dressers</span>
-      <span class="who-tag">Lookbook keepers</span>
-      <span class="who-tag">Anyone tired of repeating outfits</span>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq" data-track-section="faq">
-    <div class="section-head reveal">
-      <span class="eyebrow">Questions</span>
-      <h2>Things people ask.</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" data-track-faq="is-free"><span>Is Closeta really free?</span><span class="chev">+</span></button>
-        <div class="faq-a">Yes. Closeta is free to download from the App Store and Google Play. No subscription wall to access the core organizing, outfit-building, and planning tools.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" data-track-faq="storage"><span>Where are my clothing photos stored?</span><span class="chev">+</span></button>
-        <div class="faq-a">On your device. Closeta is a local-first app — your photos sit in your phone's storage and don't get uploaded to a cloud unless you explicitly choose to back them up.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" data-track-faq="offline"><span>Does it work offline?</span><span class="chev">+</span></button>
-        <div class="faq-a">Fully. You can add items, build outfits, plan your week, and generate packing lists with zero connection — perfect for flights and travel.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" data-track-faq="account"><span>Do I need to create an account?</span><span class="chev">+</span></button>
-        <div class="faq-a">No login or signup required. Install the app and start adding clothes immediately.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" data-track-faq="devices"><span>What devices does Closeta support?</span><span class="chev">+</span></button>
-        <div class="faq-a">iPhone (iOS) and Android phones via Google Play. Tap one of the store buttons above to get the right version for your device.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final-cta">
-    <div class="final-cta-icon reveal">
-      <img src="logo.webp" alt="Closeta icon" />
-    </div>
-    <h2 class="reveal">Get dressed in less time.</h2>
-    <p class="reveal">Download Closeta and turn your closet into your favorite tool.</p>
-    <div class="stores reveal" style="justify-content: center; max-width: 360px; margin: 28px auto 0;">
-      <a data-platform="ios" href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759" class="store-btn" target="_blank" rel="noopener" data-cta="final-ios">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-3.07 2.51-4.55 2.62-4.62-1.43-2.09-3.66-2.38-4.45-2.41-1.89-.19-3.69 1.11-4.65 1.11-.96 0-2.45-1.08-4.02-1.05-2.07.03-3.97 1.2-5.04 3.06-2.15 3.73-.55 9.25 1.55 12.27 1.03 1.48 2.26 3.13 3.86 3.07 1.55-.06 2.13-1 4.01-1 1.87 0 2.41 1 4.04.97 1.67-.03 2.73-1.5 3.75-2.99 1.18-1.71 1.66-3.37 1.69-3.46-.04-.02-3.24-1.24-3.27-4.95zM14.06 4.4c.85-1.04 1.43-2.48 1.27-3.92-1.23.05-2.71.81-3.59 1.85-.79.92-1.49 2.39-1.3 3.81 1.37.1 2.78-.7 3.62-1.74z"/></svg>
-        <div class="store-btn-text"><small>Download on the</small><span>App Store</span></div>
-      </a>
-      <a data-platform="android" href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta" class="store-btn" target="_blank" rel="noopener" data-cta="final-android">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.997.997 0 01-.61-.92V2.734c0-.366.226-.674.61-.92zm10.89 10.893l2.302-2.302 4.453 2.504c.73.41.73 1.474 0 1.884l-4.453 2.504-2.302-2.302L13.792 12l.707-.707zM4.736 1.06l11.21 6.297-2.302 2.302L4.736 1.06zM4.736 22.94l8.908-8.598 2.302 2.302L4.736 22.94z"/></svg>
-        <div class="store-btn-text"><small>Get it on</small><span>Google Play</span></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="foot-top">
-      <div class="brand">
-        <img src="logo.webp" alt="" style="width: 26px; height: 26px; border-radius: 6px;" />
-        <span class="brand-name" style="font-size: 16px;">Closeta</span>
-      </div>
-      <div class="foot-links">
-        <a href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759" target="_blank" rel="noopener" data-platform="ios" data-cta="footer-link-ios">App Store</a>
-        <a href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta" target="_blank" rel="noopener" data-platform="android" data-cta="footer-link-android">Google Play</a>
-      </div>
-    </div>
-    <hr class="divider-dotted" />
-    <div class="foot-copy">© 2026 CLOSETA · MADE FOR YOUR CLOSET</div>
-  </footer>
-
-</div>
-
-<!-- STICKY CTA -->
-<div class="sticky-cta" id="stickyCta">
-  <div class="icn"><img src="logo.webp" alt="" /></div>
-  <div class="meta">
-    <strong>Closeta</strong>
-    <small>Free · iOS &amp; Android</small>
-  </div>
-  <a data-platform="ios" href="https://apps.apple.com/in/app/outfit-maker-digital-closeta/id6760401759" target="_blank" rel="noopener" class="grab" data-cta="sticky-ios">Download</a>
-  <a data-platform="android" href="https://play.google.com/store/apps/details?id=com.sahadeep125.Closeta" target="_blank" rel="noopener" class="grab" data-cta="sticky-android">Get the app</a>
-  <a data-platform="both" href="#download" class="grab" data-cta="sticky-both">Download</a>
-</div>
-
-<script src="script.js"></script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
